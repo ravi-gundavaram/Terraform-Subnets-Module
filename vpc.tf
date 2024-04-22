@@ -38,6 +38,7 @@ resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = each.value
   availability_zone = data.aws_availability_zones.available.names[0]
+  map_public_ip_on_launch = true
   tags = {
     Name = "${module.label_vpc.id}-${each.key}" 
   }
